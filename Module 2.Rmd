@@ -1,0 +1,27 @@
+---
+title: "Module2"
+author: "Albert Christian F. Brigino"
+date: "1/21/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Module 2
+
+1. Download the outline instructions on how to import  Download how to importdata to RStudio. 
+2. Review again Chapters 1-3 from Matloff - The Art of R programming and Read Wickham textbook: R Packages Chapter 13 regarding GitHub.  
+3. Your assignment, evaluate the following function call myMean. The data for this function called assignment. 
+
+> assignment2 <- c(16, 18, 14, 22, 27, 17, 19, 17, 17, 22, 20, 22)
+>myMean <- function(assignment2) { return(sum(assignment2)/length(assignment2)) }
+> YOUR turn...
+
+```{r mod2}
+assignment2 <- c(16, 18, 14, 22, 27, 17, 19, 17, 17, 22, 20, 22)
+myMean <- function(assignment2) { return(sum(assignment2)/length(assignment2)) }
+myMean(assignment2)
+```
+
