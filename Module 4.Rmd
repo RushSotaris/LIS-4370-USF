@@ -72,17 +72,17 @@ boxplot(Freq ~ finaldecision, hspPatients,
 boxplot(bloodp ~ first, hspPatients,
         main = "Blood Pressure vs. First Results",
         xlab = "First Assessment Results",
-        ylab = "Frequency of Visits",
+        ylab = "Blood Pressure",
         names = c("good", "bad"))
 boxplot(bloodp ~ second, hspPatients,
         main = "Blood Pressure vs. Second Results",
         xlab = "Second Assessment Results",
-        ylab = "Frequency of Visits",
+        ylab = "Blood Pressure",
         names = c("good", "bad"))
 boxplot(bloodp ~ finaldecision, hspPatients,
         main = "Blood Pressure vs. Immediate Care",
         xlab = "Final Decision Results",
-        ylab = "Frequency of Visits",
+        ylab = "Blood Pressure",
         names = c("No", "Yes"))
 
 #Histograms
