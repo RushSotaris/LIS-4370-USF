@@ -1,0 +1,81 @@
+---
+title: "Module 5"
+author: "Albert Christian F. Brigino"
+date: "2/11/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(MASS)
+```
+
+## Assignment
+
+The focus of this assignment is learn about Matrix in R. 
+For more detail how to work with Matrix in R, click here  Download herefor the worksheet in Matrix.
+Plus a more detail on what is inverse Matrix, click here  Download here.  Download .This reference was created by Engineering Mathematics first aid kit published by Pearson Education.  
+The R code for inverse Matrix: solve(A). This code is the Inverse of A where A is a square matrix. For complete list of Matrix Algebra in R, visit  Dr. Kabacoff, Quick-R at https://www.statmethods.net/advstats/matrix.html (Links to an external site.)
+
+Your Assignment:
+Find the value of inverse of a matrix, determinant of a matrix by using the following values:
+A=matrix(1:100, nrow=10)
+B=matrix(1:1000, nrow=10)
+Post your result and procedure you took on your blog.
+A good start will be:
+>A <- matrix(1:100, nrow=10)  
+>B <- matrix(1:1000, nrow=10)
+
+
+
+```{r Mod5}
+
+#Create starting matrices
+A <- matrix(1:100, nrow=10)  
+B <- matrix(1:1000, nrow=10)
+
+#Transpose
+tA <- t(A)
+tB <- t(B)
+
+##Create random samples with corresponding sizes
+#a <- c(sample(1:100,100, replace = FALSE))
+a <- replicate(10,as.integer(abs(rnorm(10)*10)))
+#b <- c(sample(1:1000,1000, replace = FALSE))
+b <- replicate(10,as.integer(abs(rnorm(100)*100)))
+
+#Transposed matrices multiplied by corresponding vectors
+A2 <- tA*a
+B2 <- tB*b
+
+#Conversion of vectors into matrices
+a2 <- matrix(a, nrow = 10)
+b2 <- matrix(b, nrow = 10)
+
+#Multiplication of matrices
+newA <- a2%*%A2
+newB <- b2%*%B2
+
+#Determinant and Inverse
+det(newA)
+solve(newA)
+ginv(A)
+
+det(newB)
+solve(newB)
+
+#Checking results using MASS
+ginv(A)
+ginv(B)
+
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
