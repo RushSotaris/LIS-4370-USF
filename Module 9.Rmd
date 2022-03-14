@@ -1,0 +1,45 @@
+---
+title: "Module 9"
+author: "Albert Christian F. Brigino"
+date: "3/13/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+require(lattice)
+require(ggplot2)
+```
+
+
+
+```{r module9}
+
+#Read csv file and import into environment
+data <- read.csv("CASchools.csv")
+
+#Creates histogram using base r functions
+hist(data$english, 
+               main = "English Score Frequency in California Schools",
+               xlab = "English Score", 
+               ylab = "Frequency",
+               breaks = 15,
+               col = "forest green")
+
+#Creates scatter plot using lattice package
+xyplot(data$math ~ data$expenditure,
+       grid = TRUE,
+       alpha = 0.75,
+       main = "Math Scores vs. Expenditures in California",
+       xlab = "Expenditures",
+       ylab = "Math Score",
+       type = c("p", "smooth"),
+       group = data$grades,
+       auto.key = TRUE)
+
+#Creates 2D density map using ggplot2 package
+ggplot(data = data, 
+       aes(x = expenditure, y = read)) + geom_density_2d_filled() + labs(x = "Expenditures", y = "Reading Score", title = "Reading Scores vs. Expenditures in California")
+
+```
+
