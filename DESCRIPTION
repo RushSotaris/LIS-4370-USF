@@ -1,7 +1,7 @@
 Package: lolspotr
 Type: Package
 Title: League of Legends Statistic Calculators
-Version: 0.0.0.9001
+Version: 0.0.0.9000
 Author: Albert Brigino <abrigino@usf.edu>
 Maintainer: <abrigino@usf.edu>
 Description: Simplifies League of Legends statistic calculations
