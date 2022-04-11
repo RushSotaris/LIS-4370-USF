@@ -1,0 +1,58 @@
+---
+title: "Module 12"
+author: "Albert Christian F. Brigino"
+date: "4/10/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## % Armor Reduction
+
+Function designed to calculate % armor reduction (not to be confused with % armor penetration). % armor reduction stacks multiplicatively and will not function below zero. Currently, only two categories affect this stat, champion abilities and a single item (Black Cleaver).  
+
+```{r percentReduction}
+pRedCalc <- function (champAbility, BC){
+  #Throws error message when below minimum BC stacks
+  ifelse(BC < 0, pRed <- "Error: invalid Black Cleaver stacks (try 0-6)",
+  #Stand-alone line for if BC stacks are zero and therefore not applicable to overall calculation
+  ifelse(BC < 1, ifelse(champAbility >= 0 & champAbility < 1, pRed <- champAbility, "Error: Invalid ability value"),
+  #Applies to all valid calculations with BC stacks included
+  ifelse(BC < 7, pRed <- 1-(1-champAbility)*(1-(BC*.05)), pRed <- "Error: invalid Black Cleaver stacks (try 0-6)")))
+  
+  #Checks to see if pRed <= 0, if so, % armor reduction is not calculated
+  ifelse(pRed > 0, return(pRed), "Not Applicable")
+}
+```
+
+## Lethality Armor Penetration
+
+Function designed to calculate applied lethality of a champion based on total lethality gained according to the current level of a champion. As champion level increases, the ratio at which lethality translates to flat armor penetration also increases. 
+
+```{r lethality}
+lethCalc <- function(lethality, level){
+  faPenLeth <- lethality * (0.6 + 0.4 * level / 18)
+  #Does a check to ensure valid lethality and level inputs and returns an error message if invalid
+  ifelse(lethality > 0 & level > 0  & level < 19, return(faPenLeth), "Error: Invalid level or lethality")
+}
+```
+
+## Test Calculations
+
+```{r test}
+
+#Example of valid % reduction calculation
+pRedCalc(.24, 6)
+
+#Example of invalid % reduction calculation
+pRedCalc(.15, 8)
+
+#Example of valid lethality calculation
+lethCalc(36, 18)
+
+#example of invalid lethality calculation
+lethCalc(24, 19)
+```
+
